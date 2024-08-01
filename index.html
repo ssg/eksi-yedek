@@ -2,7 +2,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>ekşi sözlük backup reader - (c) SSG</title>
+    <script>
+        let errors = false;
+        window.addEventListener("error", () => {
+            errors = true;
+        });
+    </script>
+    <title>ekşi sözlük backup okuyucusu şeysi - (c) ssg 2024</title>
     <style>
         body {
             background-color: #ccc;
@@ -11,22 +17,64 @@
             text-align: center;
         }
 
+        #reader {
+            text-align: left;
+            margin: 20px;
+        }
+
         footer {
-            font-size: -2em;    
+            margin: 2em;
+            font-size: -2em;
+        }
+
+        #dropzone {
+            height: 200px;
+            vertical-align: middle;
+            padding-top: 150px;
+            border: 5px solid #aaa;
+            border-radius: 10px;
+        }
+
+        #error {
+            margin-top: 2em;
+            font-size: 2rem;
+        }
+
+        .active {
+            border-color: #0a4 !important;
+            background-color: #0a4;
+        }
+
+        .notaccepted {
+            border-color: #a04 !important;
+            background-color: #a04;
+        }
+
+        h1 {
+            font-size: 2em;
         }
     </style>
+
+    <script src="lib/jszip.min.js"></script>
+    <script type="module" src="./index.mjs"></script>
 </head>
 
 <body>
     <header>
-        <h1>ekşi sözlük backup XML okuyucusu şeysi</h1>
+        <h1>ekşi sözlük backup okuyucusu</h1>
     </header>
-    <p>
-        drag & drop your sozluk backup file to this page.
-    </p>
-    <footer>
-        coded by ssg 2024-07-24
+    <div id="dropzone">
+        sözlük yedek ZIP ya da XML dosyanızı bu alana sürükleyip bırakın gari.
+        <div id="error"></div>
+    </div>
+    <footer id="footer">
+        ssg 2024
     </footer>
+    <script>
+        if (errors) {
+            document.getElementById("footer").style = 'text-decoration: line-through';            
+        }
+    </script>
 </body>
 
 </html>
