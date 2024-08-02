@@ -36,10 +36,13 @@ function setup() {
         }
         if (ext === "xml") {
             const reader = new FileReader();
-            reader.onload(ev => {
-                loadXml(ev.target.result);
-            });
-            reader.readAsText(file, "iso-8859-9");
+            reader.readAsText(file);
+            reader.onerror = () => {
+                error(`XML yüklemekten biçare şu gönül naçar, ne demiş karacaoğlan: ${reader.error}`);
+            }
+            reader.onload = () => {
+                loadXml(reader.result);
+            };
             return false;
         }
         error("zip ya da xml lütfen");

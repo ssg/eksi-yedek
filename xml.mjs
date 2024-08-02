@@ -2,7 +2,7 @@ import { gi } from "./generic.mjs";
 
 const xmlMimeType = "text/xml";
 
-function loadXml(xmlBody) {
+function processXml(xmlBody) {
     console.debug("loadXml!");
     const parser = new DOMParser();
     const xml = parser.parseFromString(xmlBody, xmlMimeType);
@@ -19,4 +19,4 @@ function loadXml(xmlBody) {
         })
 }
 
-export { loadXml };
+export { processXml as loadXml };

@@ -83,10 +83,6 @@ pre {
     font-size: 2rem;
 }
 
-.title {
-    color: #04048f;
-}
-
 .active {
     border-color: #0a4;
     background-color: #0a4;
@@ -99,6 +95,7 @@ pre {
 
 #instruction {
     padding-top: 100px;
+    pointer-events: none;
 }
 
 h1 {
