@@ -26,9 +26,8 @@ function setup() {
                 .then((zip) => {
                     zip.forEach((relativePath, file) => {
                         if (relativePath.endsWith(".xml")) {
-                            file.async("string", (str) => {
-                                loadXml(str);
-                            });
+                            file.async("string")
+                                .then((str) => loadXml(str));
                         }
                     });
                 });
