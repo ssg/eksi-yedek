@@ -13,7 +13,9 @@ function loadXml(xmlBody) {
             const processor = new XSLTProcessor();
             processor.importStylesheet(xslStr);
             const result = processor.transformToFragment(xml, document);
-            gi("dropzone").replaceChildren(result);
+            gi("dropzone").classList.remove("expanded");
+            gi("dropzone").classList.add("mini");
+            gi("content").replaceChildren(result);
         })
 }
 

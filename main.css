@@ -1,0 +1,106 @@
+body {
+    background-color: #ccc;
+    color: black;
+    font-family: sans-serif;
+    text-align: center;
+    max-width: 600px;
+    text-overflow: wrap;
+}
+
+h3 {
+    line-height: 0;
+}
+
+hr {
+    border: 1px solid #aaa;
+}
+
+.aul {
+    text-align: right;
+    font-size: 0.8rem;
+}
+
+a {
+    color: #000077;
+    text-decoration: none;
+}
+
+#reader {
+    text-align: left;
+    margin: 20px;
+    vertical-align: top;
+}
+
+footer {
+    margin: 2em;
+    font-size: -2em;
+}
+
+.dropzone {
+    border: 5px solid #aaa;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.expanded {
+    height: 250px;
+    visibility: visible;
+    transition: height 1s 0s, visibility 1s 0s;
+}
+
+.draft {
+    font-style: italic;
+}
+
+.mini {
+    height: 0;
+    visibility: hidden;
+    transition: height 1s 0s, visibility 1s 0s;
+}
+
+@keyframes shrink {
+    from {
+        height: 200px;
+    }
+
+    to {
+        height: 0;
+    }
+}
+
+.backup-owner {
+    display: inline-block;
+}
+
+pre {
+    font-family: sans-serif;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+#error {
+    margin-top: 2em;
+    font-size: 2rem;
+}
+
+.title {
+    color: #04048f;
+}
+
+.active {
+    border-color: #0a4;
+    background-color: #0a4;
+}
+
+.notaccepted {
+    border-color: #a04;
+    background-color: #a04;
+}
+
+#instruction {
+    padding-top: 100px;
+}
+
+h1 {
+    font-size: 2em;
+}

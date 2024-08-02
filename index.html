@@ -2,58 +2,9 @@
 
 <head>
     <meta charset="utf-8">
-    <script>
-        let errors = false;
-        window.addEventListener("error", () => {
-            errors = true;
-        });
-    </script>
-    <title>ekşi sözlük backup okuyucusu şeysi - (c) ssg 2024</title>
-    <style>
-        body {
-            background-color: #ccc;
-            color: black;
-            font-family: sans-serif;
-            text-align: center;
-        }
+    <title>ekşi sözlük yedek okuyucusu şeysi - (c) ssg 2024</title>
 
-        #reader {
-            text-align: left;
-            margin: 20px;
-        }
-
-        footer {
-            margin: 2em;
-            font-size: -2em;
-        }
-
-        #dropzone {
-            height: 200px;
-            vertical-align: middle;
-            padding-top: 150px;
-            border: 5px solid #aaa;
-            border-radius: 10px;
-        }
-
-        #error {
-            margin-top: 2em;
-            font-size: 2rem;
-        }
-
-        .active {
-            border-color: #0a4 !important;
-            background-color: #0a4;
-        }
-
-        .notaccepted {
-            border-color: #a04 !important;
-            background-color: #a04;
-        }
-
-        h1 {
-            font-size: 2em;
-        }
-    </style>
+    <link rel="stylesheet" href="main.css"/>
 
     <script src="lib/jszip.min.js"></script>
     <script type="module" src="./index.mjs"></script>
@@ -61,20 +12,23 @@
 
 <body>
     <header>
-        <h1>ekşi sözlük backup okuyucusu</h1>
+        <h1>ekşi sözlük yedek okuyucusu şeysi</h1>
     </header>
-    <div id="dropzone">
-        sözlük yedek ZIP ya da XML dosyanızı bu alana sürükleyip bırakın gari.
+    <div id="dropzone" class="dropzone expanded">
+        <div id="instruction">
+            sözlük yedek ZIP ya da XML dosyanızı bu alana sürükleyip bırakın 
+            gari.
+            <br/><br/>
+            <small>kodlarınız doğrudan web tarayıcınızda istemci tarafında 
+                işlenmekte, el değmeden, sunucu yüzü görmeden sizlere
+                işlenerek geri verilmektedir.</small>
+        </div>
         <div id="error"></div>
     </div>
+    <div id="content"></div>
     <footer id="footer">
-        ssg 2024
+        ssg · 2024 · <a href="https://github.com/ssg/sozluk-backup-reader">kaynak kodu</a>
     </footer>
-    <script>
-        if (errors) {
-            document.getElementById("footer").style = 'text-decoration: line-through';            
-        }
-    </script>
 </body>
 
 </html>

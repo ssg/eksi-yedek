@@ -8,7 +8,7 @@ function setup() {
         console.debug("drop");
         ev.preventDefault();
 
-        gi("dropzone").className = "active";
+        gi("dropzone").classList.add("active");
         const dt = ev.dataTransfer;
         console.log("%o", dt);
         if (dt === null || dt.files.length == 0) {
@@ -50,12 +50,12 @@ function setup() {
 
     listen("dragenter", (ev) => {
         console.debug("dragenter");
-        gi("dropzone").className = "active";
+        gi("dropzone").classList.add("active");
         return true;
     });
     listen("dragleave", (ev) => {
         console.debug("dragleave");
-        gi("dropzone").className = "";
+        gi("dropzone").classList.remove("active");
         return true;
     });
     console.debug("setup complete");
