@@ -37,6 +37,8 @@ footer {
 }
 
 .dropzone {
+    display: flex;
+    align-items: center;
     border: 5px solid #aaa;
     border-radius: 10px;
     overflow: hidden;
@@ -59,16 +61,6 @@ footer {
     transition: height 1s 0s, visibility 1s 0s;
 }
 
-@keyframes shrink {
-    from {
-        height: 200px;
-    }
-
-    to {
-        height: 0;
-    }
-}
-
 .backup-owner {
     display: inline-block;
 }
@@ -82,7 +74,7 @@ pre {
 
 #error {
     margin-top: 2em;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .active {
@@ -96,8 +88,9 @@ pre {
 }
 
 #instruction {
-    padding-top: 100px;
     pointer-events: none;
+    text-align: center;
+    width: 100%;
 }
 
 h1 {
