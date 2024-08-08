@@ -2,7 +2,6 @@ body {
     background-color: #ccc;
     color: black;
     font-family: sans-serif;
-    text-align: center;
     max-width: 600px;
     text-overflow: wrap;
 }
@@ -21,7 +20,7 @@ hr {
 }
 
 a {
-    color: #000077;
+    color: #000080;
     text-decoration: none;
 }
 
@@ -34,12 +33,14 @@ a {
 footer {
     margin: 2em;
     font-size: -2em;
+    text-align: center;
 }
 
 .dropzone {
     border: 5px solid #aaa;
     border-radius: 10px;
     overflow: hidden;
+    text-align: center;
 }
 
 .expanded {
@@ -76,6 +77,7 @@ pre {
     font-family: sans-serif;
     word-wrap: break-word;
     white-space: pre-wrap;
+    display: block;
 }
 
 #error {
@@ -100,4 +102,15 @@ pre {
 
 h1 {
     font-size: 2em;
+    margin-bottom: 0;
+    color: #555;
+}
+
+h2 {
+    margin-top: 0;
+    color: #888;
+}
+
+small {
+    color: #555;
 }

@@ -1,5 +1,5 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-    <xsl:output method="html" encoding="utf-8"/>
+    <xsl:output method="html" encoding="utf-8" />
 
     <xsl:template match="/">
         <div id="reader">
@@ -11,34 +11,46 @@
         <h2 class="backup-owner">
             <xsl:value-of select="@nick" />
         </h2>
-        <div>yedek tarihi: <xsl:value-of select="@backupdate" /></div>
+        <div>yedek tarihi: <xsl:value-of select="translate(@backupdate,'T', ' ')" /></div>
 
-        <hr/>
+        <hr />
 
         <xsl:apply-templates />
     </xsl:template>
 
-    <xsl:template match="entry">
+    <xsl:template name="entry">
+        <xsl:param name="title" />
+        <xsl:param name="content" />
+        <xsl:param name="date" />
+        <xsl:param name="draftClass" />
+
         <div class="entry">
             <h3>
                 <a>
                     <xsl:attribute name="href">https://eksisozluk.com/?q=<xsl:value-of
-                            select="@title" /></xsl:attribute>
-                    <xsl:value-of select="@title" />
+                            select="$title" /></xsl:attribute>
+                    <xsl:value-of select="$title" />
                 </a>
             </h3>
-            <div class="entry">
-                <pre><xsl:value-of select="."/></pre>
-            </div>
+            <pre><xsl:attribute name="class"><xsl:value-of select="$draftClass"/></xsl:attribute><xsl:value-of select="$content"/></pre>
             <div class="aul">
                 <a>
                     <xsl:attribute name="href">https://eksisozluk.com/?q=@<xsl:value-of
-                            select="@title" /></xsl:attribute>                    
-                    <xsl:value-of select="/backup/@nick" /></a>
+                            select="/backup/@nick" /></xsl:attribute>
+                    <xsl:value-of select="/backup/@nick" />
+                </a>
                 <br />
-                <xsl:value-of select="@date" />
+                <xsl:value-of select="translate($date, 'T', ' ')" />
             </div>
         </div>
+    </xsl:template>
+
+    <xsl:template match="entry">
+        <xsl:call-template name="entry">
+            <xsl:with-param name="title" select="@title"/>
+            <xsl:with-param name="content" select="."/>
+            <xsl:with-param name="date" select="@date"/>
+        </xsl:call-template>
     </xsl:template>
 
     <xsl:template match="drafts">
@@ -48,23 +60,11 @@
     </xsl:template>
 
     <xsl:template match="draft">
-        <div class="entry">
-            <h3>
-                <a>
-                    <xsl:value-of select="@title" />
-                </a>
-            </h3>
-            <div class="entry draft">
-                <pre><xsl:value-of select="."/></pre>
-            </div>
-            <div class="aul">
-                <a>
-                    <xsl:attribute name="href">https://eksisozluk.com/?q=@<xsl:value-of
-                            select="@title" /></xsl:attribute>                    
-                    <xsl:value-of select="/backup/@nick" /></a>
-                <br />
-                <xsl:value-of select="@date" />
-            </div>
-        </div>
+        <xsl:call-template name="entry">
+            <xsl:with-param name="title" select="@title"/>
+            <xsl:with-param name="content" select="."/>
+            <xsl:with-param name="date" select="@date"/>
+            <xsl:with-param name="draftClass">draft</xsl:with-param>
+        </xsl:call-template>
     </xsl:template>
 </xsl:stylesheet>

@@ -5,29 +5,33 @@
     <title>ekşi sözlük yedek okuyucusu şeysi - (c) ssg 2024</title>
 
     <link rel="stylesheet" href="main.css"/>
+    <link rel="icon" type="image/icon" href="favicon.ico/>
 
+    <script src="eksitext-2024.js"></script>
     <script src="lib/jszip.min.js"></script>
     <script type="module" src="./index.mjs"></script>
 </head>
 
 <body>
     <header>
-        <h1>ekşi sözlük yedek okuyucusu şeysi</h1>
+        <h1>ekşi sözlük</h1>
+        <h2>yedek okuyucu şeysi - v0.1 alpha</h2>
     </header>
     <div id="dropzone" class="dropzone expanded">
         <div id="instruction">
             sözlük yedek ZIP ya da XML dosyanızı bu alana sürükleyip bırakın 
             gari.
             <br/><br/>
-            <small>kodlarınız doğrudan web tarayıcınızda istemci tarafında 
-                işlenmekte, el değmeden, sunucu yüzü görmeden sizlere
-                işlenerek geri verilmektedir.</small>
         </div>
         <div id="error"></div>
     </div>
     <div id="content"></div>
     <footer id="footer">
         ssg · 2024 · <a href="https://github.com/ssg/sozluk-backup-reader">kaynak kodu</a>
+        <br/>
+        <br/>
+        <small>(verileriniz tamamen kendi tarayıcınızda, istemci tarafında el değmeden işlenmektedir. 
+            herhangi bir yere aktarılmamaktadır. kodları kendi bilgisayarınızda da çalıştırabilirsiniz)</small>
     </footer>
 </body>
 
