@@ -2,6 +2,7 @@
     "short_name": "ekşi yedek",
     "name": "ekşi sözlük yedek okuma şeysi",
     "author": "ssg",
+    "start_url": "https://kod.ssg.dev/sozluk-backup-reader",
     "background_color": "#ccc",
     "display": "standalone",
     "scope": "/",
