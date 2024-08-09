@@ -2,7 +2,7 @@
     "short_name": "ekşi yedek",
     "name": "ekşi sözlük yedek okuma şeysi",
     "id": "/?source=pwa",
-    "start_url": "/?source=pwa",
+    "start_url": "https://kod.ssg.dev/sozluk-backup-reader/?source=pwa",
     "background_color": "#ccc",
     "display": "standalone",
     "scope": "/",
