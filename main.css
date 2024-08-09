@@ -22,6 +22,7 @@ hr {
 a {
     color: #000080;
     text-decoration: none;
+    cursor: hand;
 }
 
 #reader {
@@ -72,6 +73,10 @@ pre {
     display: block;
 }
 
+#fileinput {
+    display: none;
+}
+
 #error {
     margin-top: 2em;
     font-size: 1.5rem;
@@ -90,7 +95,7 @@ pre {
 #instruction {
     pointer-events: none;
     text-align: center;
-    width: 100%;
+    padding: 10px;
 }
 
 h1 {

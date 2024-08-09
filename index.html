@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="tr">
 
 <head>
@@ -19,14 +20,15 @@
         <h1>ekşi sözlük</h1>
         <h2>yedek okuyucu şeysi - v0.1 alpha</h2>
     </header>
-    <div id="dropzone" class="dropzone expanded">
+    <label id="dropzone" class="dropzone expanded" for="fileinput">
         <div id="instruction">
-            sözlük yedek ZIP ya da XML dosyanızı bu alana sürükleyip bırakın 
-            gari.
+            sözlük yedek ZIP ya da XML dosyanızı bu alana sürükleyip bırakın. 
+            olmadı buralara bi yerlere dokunun.
+            <input id="fileinput" type="file">
             <br/><br/>
         </div>
         <div id="error"></div>
-    </div>
+    </label>
     <div id="content"></div>
     <footer id="footer">
         ssg · 2024 · <a href="https://github.com/ssg/sozluk-backup-reader">kaynak kodu</a>
