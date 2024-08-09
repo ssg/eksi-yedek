@@ -1,0 +1,32 @@
+{
+    "short_name": "ekşi yedek",
+    "name": "ekşi sözlük yedek okuma şeysi",
+    "id": "/?source=pwa",
+    "start_url": "/?source=pwa",
+    "background_color": "#ccc",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#81c14b",
+    "description": "ekşi sözlük kullanıcılarının yedek ziplerini okumayı sağlar",
+    "icons": [
+        {
+            "src": "img/icon.svg",
+            "type": "image/svg+xml",
+            "sizes": "794x794"
+        }
+    ],
+    "screenshots": [
+        {
+            "form_factor": "wide",
+            "label": "okuma ekranı görüntüsü",
+            "src": "img/screenshot_wide.png",
+            "sizes": "1132x1041"
+        },
+        {
+            "form_factor": "narrow",
+            "label": "okuma ekranı görüntüsü",
+            "src": "img/screenshot_narrow.png",
+            "sizes": "589x927"
+        }
+    ]
+}
