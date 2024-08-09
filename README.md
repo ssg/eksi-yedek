@@ -9,6 +9,7 @@ kullanmak için: [kod.ssg.dev/sozluk-backup-reader](https://kod.ssg.dev/sozluk-b
 # yapılsa iyi olur
 
 - [X] PWA
+- [ ] mobil cihazlarda sürükle bırak alternatifi dosya yükleme
 - [ ] entry metinlerindeki linklerin doğru gösterimi
 - [ ] sol frame
 
