@@ -6,6 +6,12 @@ tamamen istemci tarafında çalışır. verilerinize dokunmaz.
 
 kullanmak için: [kod.ssg.dev/sozluk-backup-reader](https://kod.ssg.dev/sozluk-backup-reader)
 
+# yapılsa iyi olur
+
+- [X] PWA
+- [ ] entry metinlerindeki linklerin doğru gösterimi
+- [ ] sol frame
+
 # lisans
 
 MIT 
