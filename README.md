@@ -10,7 +10,7 @@ kullanmak için: [kod.ssg.dev/sozluk-backup-reader](https://kod.ssg.dev/sozluk-b
 
 - [X] PWA
 - [X] mobil cihazlarda sürükle bırak alternatifi dosya yükleme
-- [ ] yeni yedek yükle butonu
+- [ ] "başka yedeğe bak" butonu
 - [ ] entry metinlerindeki linklerin doğru gösterimi
 - [ ] sol frame
 
