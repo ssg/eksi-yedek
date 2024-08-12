@@ -1,7 +1,7 @@
 // ekşi sözlük entry markup syntax
 // ssg - 2024-08-02
 
-eksi_text = (directive / plain_text)+
+eksi_text = (directive / $plain_text)+
   
 directive = bkz
   / gbkz
@@ -67,4 +67,4 @@ path = "/" [^?/]* path*
 
 url_query = "?" [^\x0020\]]+
 
-plain_text = $(!directive [^`([\n\r]+)
+plain_text = (!directive .)+
