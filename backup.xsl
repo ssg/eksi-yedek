@@ -18,9 +18,29 @@
         <xsl:apply-templates />
     </xsl:template>
 
+    <xsl:template match="p">
+        <br/>
+        <br/>
+    </xsl:template>
+
+    <xsl:template match="gbkz">
+        <a><xsl:attribute name="href">https://eksisozluk.com/?q=<xsl:value-of select="."/></xsl:attribute><xsl:value-of select="."/></a>
+    </xsl:template>
+
+    <xsl:template match="bkz">
+        <a><xsl:attribute name="href">https://eksisozluk.com/?q=<xsl:value-of select="."/></xsl:attribute>(bkz: <xsl:value-of select="."/>)</a>
+    </xsl:template>
+
+    <xsl:template match="abkz">
+        <xsl:value-of select="@text"/>
+        <a>
+            <xsl:attribute name="href">https://eksisozluk.com/?q=<xsl:value-of select="."/></xsl:attribute>
+            <xsl:value-of select="@query" />
+        </a>
+    </xsl:template>
+
     <xsl:template name="entry">
         <xsl:param name="title" />
-        <xsl:param name="content" />
         <xsl:param name="date" />
         <xsl:param name="draftClass" />
 
@@ -32,7 +52,9 @@
                     <xsl:value-of select="$title" />
                 </a>
             </h3>
-            <pre><xsl:attribute name="class"><xsl:value-of select="$draftClass"/></xsl:attribute><xsl:value-of select="$content"/></pre>
+            <pre><xsl:attribute name="class"><xsl:value-of select="$draftClass"/></xsl:attribute>
+                <xsl:apply-templates />
+            </pre>
             <div class="aul">
                 <a>
                     <xsl:attribute name="href">https://eksisozluk.com/?q=@<xsl:value-of
@@ -47,9 +69,8 @@
 
     <xsl:template match="entry">
         <xsl:call-template name="entry">
-            <xsl:with-param name="title" select="@title"/>
-            <xsl:with-param name="content" select="."/>
-            <xsl:with-param name="date" select="@date"/>
+            <xsl:with-param name="title" select="@title" />
+            <xsl:with-param name="date" select="@date" />
         </xsl:call-template>
     </xsl:template>
 
@@ -61,9 +82,8 @@
 
     <xsl:template match="draft">
         <xsl:call-template name="entry">
-            <xsl:with-param name="title" select="@title"/>
-            <xsl:with-param name="content" select="."/>
-            <xsl:with-param name="date" select="@date"/>
+            <xsl:with-param name="title" select="@title" />
+            <xsl:with-param name="date" select="@date" />
             <xsl:with-param name="draftClass">draft</xsl:with-param>
         </xsl:call-template>
     </xsl:template>
