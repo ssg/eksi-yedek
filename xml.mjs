@@ -57,7 +57,16 @@ function displayXml(xmlBody) {
  * @returns {Element} newly processed node 
  */
 function processEksiMarkup(xml, node) {
-    let parsed = parse(node.textContent);
+    let parsed;
+    try {
+        parsed = parse(node.textContent);
+    }
+    catch {
+        let serializer = new XMLSerializer();
+        const str = serializer.serializeToString(node);
+        console.error("couldn't parse entry node: %s", str);
+        return node;
+    }
     let newNode = node.cloneNode();
     newNode.replaceChildren(); // remove all nodes
     parsed.forEach(part => {
