@@ -1,6 +1,6 @@
 console.debug("hello world");
 import { gi, listen, error } from './generic.mjs';
-import { loadXml } from './xml.mjs';
+import { displayXml } from './xml.mjs';
 
 function processFiles(files) {
     if (files.length === 0) {
@@ -18,7 +18,7 @@ function processFiles(files) {
                 zip.forEach((relativePath, file) => {
                     if (relativePath.endsWith(".xml")) {
                         file.async("string")
-                            .then((str) => loadXml(str));
+                            .then((str) => displayXml(str));
                     }
                 });
             });
@@ -31,7 +31,7 @@ function processFiles(files) {
             error(`XML yüklemekten biçare şu gönül naçar, ne demiş karacaoğlan: ${reader.error}`);
         }
         reader.onload = () => {
-            loadXml(reader.result);
+            displayXml(reader.result);
         };
         return;
     }
@@ -70,7 +70,5 @@ function setup() {
     });
     console.debug("setup complete");
 }
-
-window.addEventListener("load", setup);
 
 export { setup };

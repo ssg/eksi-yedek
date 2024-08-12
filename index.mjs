@@ -1,5 +1,5 @@
 import { setup } from "./dropzone.mjs";
-import { loadXml } from "./xml.mjs";
+import { displayXml } from "./xml.mjs";
 
 function test() {
     fetch("ssg.xml")
@@ -7,9 +7,9 @@ function test() {
             return response.text();
         })
         .then(text => {
-            loadXml(text);
+            displayXml(text);
         });
 }
 
 window.addEventListener("load", setup);
-// window.addEventListener("load", test);
+window.addEventListener("load", test);

@@ -2,8 +2,7 @@ import { gi } from "./generic.mjs";
 
 const xmlMimeType = "text/xml";
 
-function processXml(xmlBody) {
-    console.debug("loadXml!");
+function displayXml(xmlBody) {
     const parser = new DOMParser();
     const xml = parser.parseFromString(xmlBody, xmlMimeType);
     fetch("backup.xsl")
@@ -19,4 +18,4 @@ function processXml(xmlBody) {
         })
 }
 
-export { processXml as loadXml };
+export { displayXml };
