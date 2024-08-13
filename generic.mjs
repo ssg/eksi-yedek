@@ -10,7 +10,8 @@ const gi = (id) => document.getElementById(id);
  * @param {string} message 
  */
 const error = (message) => {
-    gi("error").innerText = message;
+    gi("error").innerText = `⚠️ ${message}`;
+    setTimeout(() => gi("dropzone").classList.remove("active"), 500);
     console.debug("showing error: %s", message);
 }
 

@@ -39,6 +39,7 @@ footer {
 
 .dropzone {
     display: flex;
+    flex-flow: column wrap;
     align-items: center;
     border: 5px solid #aaa;
     border-radius: 10px;
@@ -84,11 +85,6 @@ pre {
     border: 0;
 }
 
-#error {
-    margin-top: 2em;
-    font-size: 1.5rem;
-}
-
 .active {
     border-color: #0a4;
     background-color: #0a4;
@@ -99,9 +95,14 @@ pre {
     background-color: #a04;
 }
 
-#instruction {
+#instruction {    
     pointer-events: none;
-    text-align: center;
+    padding: 10px;
+    padding-top: 100px;
+}
+
+#error {
+    font-size: 1.3rem;
     padding: 10px;
 }
 
