@@ -120,3 +120,7 @@ h2 {
 small {
     color: #555;
 }
+
+.entry h3 {
+    line-height: normal;
+}
