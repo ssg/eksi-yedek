@@ -11,33 +11,28 @@
         <h2 class="backup-owner">
             <xsl:value-of select="@nick" />
         </h2>
-        <div>yedek tarihi: <xsl:value-of select="translate(@backupdate,'T', ' ')" /></div>
+        <div title="yedek tarihi">📅<xsl:value-of select="translate(@backupdate,'T', ' ')" /></div>
 
         <hr />
 
         <xsl:apply-templates />
     </xsl:template>
 
-    <xsl:template match="p">
-        <br/>
-        <br/>
-    </xsl:template>
+    <!-- these are inside a <pre> so white-space is significant. that's why these look compressed -->
+    <xsl:template match="p"><br /><br /></xsl:template>
 
     <xsl:template match="gbkz">
-        <a><xsl:attribute name="href">https://eksisozluk.com/?q=<xsl:value-of select="."/></xsl:attribute><xsl:value-of select="."/></a>
+        <a><xsl:attribute name="href">https://eksisozluk.com/?q=<xsl:value-of select="." /></xsl:attribute><xsl:value-of select="." /></a>
     </xsl:template>
 
     <xsl:template match="bkz">
-        <a><xsl:attribute name="href">https://eksisozluk.com/?q=<xsl:value-of select="."/></xsl:attribute>(bkz: <xsl:value-of select="."/>)</a>
+        (bkz: <a><xsl:attribute name="href">https://eksisozluk.com/?q=<xsl:value-of select="." /></xsl:attribute><xsl:value-of select="." /></a>)
     </xsl:template>
 
     <xsl:template match="abkz">
-        <xsl:value-of select="@text"/>
-        <a>
-            <xsl:attribute name="href">https://eksisozluk.com/?q=<xsl:value-of select="."/></xsl:attribute>
-            <xsl:value-of select="@query" />
-        </a>
+        <xsl:value-of select="@text" /><a><xsl:attribute name="href">https://eksisozluk.com/?q=<xsl:value-of select="." /></xsl:attribute><xsl:value-of select="@query" /></a>
     </xsl:template>
+    <!-- end of <pre> matchers-->
 
     <xsl:template name="entry">
         <xsl:param name="title" />
@@ -56,13 +51,15 @@
                 <xsl:apply-templates />
             </pre>
             <div class="aul">
-                <a>
+                <a title="entry yazarı">
                     <xsl:attribute name="href">https://eksisozluk.com/?q=@<xsl:value-of
                             select="/backup/@nick" /></xsl:attribute>
                     <xsl:value-of select="/backup/@nick" />
                 </a>
                 <br />
-                <xsl:value-of select="translate($date, 'T', ' ')" />
+                <span title="entry tarihi">
+                    <xsl:value-of select="translate($date, 'T', ' ')" />
+                </span>
             </div>
         </div>
     </xsl:template>
