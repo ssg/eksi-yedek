@@ -11,6 +11,7 @@ kullanmak için: [kod.ssg.dev/eksi-yedek](https://kod.ssg.dev/eksi-yedek)
 - [X] PWA
 - [X] mobil cihazlarda sürükle bırak alternatifi dosya yükleme
 - [ ] "başka yedeğe bak" butonu
+- [ ] testler (rendering ve parsing)
 - [X] entry metinlerindeki linklerin doğru gösterimi
 - [ ] sol frame
 - [ ] örf ve adetlerimize uygun tarih gösterimi 
