@@ -1,6 +1,8 @@
 // ekşi sözlük entry markup syntax
 // ssg - 2024-08-02
 
+// run .\generate-parser.cmd to build the parser
+
 eksi_text = (directive / $plain_text)+
   
 directive = bkz

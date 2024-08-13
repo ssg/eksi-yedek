@@ -1,7 +1,13 @@
 console.debug("hello world");
-import { gi, listen, error } from './generic.mjs';
+import { gi, error } from './generic.mjs';
 import { displayXml } from './xml.mjs';
 
+/**
+ * processes the uploaded file list, and extracts
+ * the zip, and later displays the XML.
+ * @param {FileList} files 
+ * @returns 
+ */
 function processFiles(files) {
     if (files.length === 0) {
         return;
@@ -39,7 +45,18 @@ function processFiles(files) {
     return;
 }
 
-function setup() {
+/**
+ * listen event on the dropzone
+ * @param {string} eventName 
+ * @param {Function} func 
+ * @returns 
+ */
+const listen = (eventName, func) => gi("dropzone").addEventListener(eventName, func);
+
+/**
+ * initialize dropzone event handlers
+ */
+function setupDropZone() {
     console.debug("setup called");
     listen("drop", (ev) => {
         console.debug("drop");
@@ -71,4 +88,4 @@ function setup() {
     console.debug("setup complete");
 }
 
-export { setup };
+export { setupDropZone };

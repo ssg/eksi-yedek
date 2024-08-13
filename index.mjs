@@ -1,4 +1,4 @@
-import { setup } from "./dropzone.mjs";
+import { setupDropZone } from "./dropzone.mjs";
 import { displayXml } from "./xml.mjs";
 
 function test() {
@@ -11,5 +11,5 @@ function test() {
         });
 }
 
-window.addEventListener("load", setup);
+window.addEventListener("load", setupDropZone);
 // window.addEventListener("load", test);
