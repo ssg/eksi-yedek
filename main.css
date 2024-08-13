@@ -121,6 +121,7 @@ small {
     color: #555;
 }
 
-.entry h3 {
+.entry h3,
+.draft h3 {
     line-height: normal;
 }
