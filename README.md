@@ -13,6 +13,7 @@ kullanmak için: [kod.ssg.dev/eksi-yedek](https://kod.ssg.dev/eksi-yedek)
 - [ ] "başka yedeğe bak" butonu
 - [X] entry metinlerindeki linklerin doğru gösterimi
 - [ ] sol frame
+- [ ] örf ve adetlerimize uygun tarih gösterimi 
 
 # lisans
 
