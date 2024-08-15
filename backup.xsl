@@ -18,21 +18,34 @@
         <xsl:apply-templates />
     </xsl:template>
 
-    <!-- these are inside a <pre> so white-space is significant. that's why these look compressed -->
-    <xsl:template match="p"><br /><br /></xsl:template>
+    <xsl:template match="br">
+        <br />
+    </xsl:template>
+
+    <xsl:template match="p">
+        <br />
+        <br />
+    </xsl:template>
 
     <xsl:template match="gbkz">
-        <a><xsl:attribute name="href">https://eksisozluk.com/?q=<xsl:value-of select="." /></xsl:attribute><xsl:value-of select="." /></a>
+        <a>
+            <xsl:attribute name="href">https://eksisozluk.com/?q=<xsl:value-of select="." /></xsl:attribute>
+            <xsl:value-of select="." />
+        </a>
     </xsl:template>
 
-    <xsl:template match="bkz">
-        (bkz: <a><xsl:attribute name="href">https://eksisozluk.com/?q=<xsl:value-of select="." /></xsl:attribute><xsl:value-of select="." /></a>)
-    </xsl:template>
+    <xsl:template match="bkz">(bkz: <a>
+            <xsl:attribute name="href">https://eksisozluk.com/?q=<xsl:value-of select="." /></xsl:attribute>
+            <xsl:value-of select="." />
+        </a>)</xsl:template>
 
     <xsl:template match="abkz">
-        <xsl:value-of select="@text" /><a><xsl:attribute name="href">https://eksisozluk.com/?q=<xsl:value-of select="." /></xsl:attribute><xsl:value-of select="@query" /></a>
+        <xsl:value-of select="@text" />
+        <a>
+            <xsl:attribute name="href">https://eksisozluk.com/?q=<xsl:value-of select="." /></xsl:attribute>
+            <xsl:value-of select="@query" />
+        </a>
     </xsl:template>
-    <!-- end of <pre> matchers-->
 
     <xsl:template name="entry">
         <xsl:param name="title" />
