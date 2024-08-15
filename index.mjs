@@ -12,4 +12,7 @@ function test() {
 }
 
 window.addEventListener("load", setupDropZone);
-// window.addEventListener("load", test);
+
+if (location.search == "?test=1") {
+    window.addEventListener("load", test);
+}
