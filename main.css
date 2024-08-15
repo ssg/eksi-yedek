@@ -70,7 +70,7 @@ footer {
 pre {
     font-family: sans-serif;
     word-wrap: break-word;
-    white-space: pre-wrap;
+    white-space: normal;
     display: block;
 }
 
