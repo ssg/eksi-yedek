@@ -3,11 +3,11 @@ body {
     color: black;
     font-family: sans-serif;
     max-width: 600px;
-    text-overflow: wrap;
 }
 
 h3 {
-    line-height: 0;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 hr {
@@ -72,6 +72,8 @@ pre {
     word-wrap: break-word;
     white-space: normal;
     display: block;
+    margin-top: 0;
+    margin-bottom: 16px;
 }
 
 #fileinput {
