@@ -1,5 +1,12 @@
 {
+  "type": "module",
   "devDependencies": {
+    "chai": "^5.1.1",
+    "mocha": "^10.7.3",
     "peggy": "^4.0.3"
+  },
+  "scripts": {
+    "test": "mocha",
+    "build": "peggy --format es -o eksitext-2024.js eksitext-2024.peggy"
   }
 }
