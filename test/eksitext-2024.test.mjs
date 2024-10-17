@@ -70,6 +70,29 @@ describe('Ekşi Sözlük Parser', () => {
         { type: 'paragraph_break' },
         'New paragraph.'
       ]
+    },
+    {
+      name: 'abkz',
+      input: 'herkes kötü deneyimlerimle ve duygularımla dalga geçiyor. hayatı boyunca bulunduğu -istisnasız- her yerde şiddete maruz kalmış biri olarak beni `cesaret`lendirecek birini bulmalıydım. bu yüzden ekşi sözlük her ne kadar kendisine öğretilen milyonlarca `bilgi`yi sorgularken`:sorgulamak` gerçek benliğini bulmakta',
+      expected: [
+          "herkes kötü deneyimlerimle ve duygularımla dalga geçiyor. hayatı boyunca bulunduğu -istisnasız- her yerde şiddete maruz kalmış biri olarak beni ",
+          {
+            "query": "cesaret",
+            "type": "gbkz"
+          },
+          "lendirecek birini bulmalıydım. bu yüzden ekşi sözlük her ne kadar kendisine öğretilen milyonlarca ",
+          {
+            "query": "bilgi",
+            "type": "gbkz"
+          },
+          "yi sorgularken",
+          {
+            "query": "sorgulamak",
+            "text": null,
+            "type": "abkz"
+          },
+          " gerçek benliğini bulmakta"      
+        ]
     }
   ];
 
