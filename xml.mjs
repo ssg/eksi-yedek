@@ -90,6 +90,7 @@ function processEksiMarkup(xml, node) {
                 subNode = xml.createElement("abkz");
                 subNode.textContent = part.text;
                 subNode.setAttribute("query", part.query);
+                break;
             }
             case "paragraph_break": {
                 subNode = xml.createElement("p");

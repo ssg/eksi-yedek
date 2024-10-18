@@ -41,10 +41,10 @@
 
     <xsl:template match="abkz">
         <xsl:value-of select="@text" />
-        <a>
+        <sup>(<a>
             <xsl:attribute name="href">https://eksisozluk.com/?q=<xsl:value-of select="." /></xsl:attribute>
             <xsl:value-of select="@query" />
-        </a>
+        </a>)</sup>
     </xsl:template>
 
     <xsl:template name="entry">
