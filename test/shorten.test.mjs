@@ -19,8 +19,8 @@ describe('Shorten Url Display', () => {
         },        
         {
             name: 'invalid URL',
-            input: 'http://-',
-            expected: 'http://-'
+            input: 'http://|',
+            expected: 'http://|'
         }
     ];
     testCases.forEach(({ name, input, expected }) => {
