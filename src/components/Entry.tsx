@@ -2,20 +2,22 @@ import React from 'react'
 import { EntryContent } from './EntryContent'
 import { EntryDate } from './EntryDate'
 import { highlightText } from '../utils/highlight'
+import clsx from 'clsx';
 
 interface EntryProps {
     title: string
     id?: number
     date: Date
+    deleted?: boolean
     nick: string
     parsedContent: any[]
     isDraft?: boolean
     searchQuery?: string
 }
 
-export function Entry({ title, id, date, nick, parsedContent, isDraft = false, searchQuery = '' }: EntryProps) {
+export function Entry({ title, id, date, deleted = false, nick, parsedContent, isDraft = false, searchQuery = '' }: EntryProps) {
     return (
-        <div className="entry">
+        <div className={clsx('entry', { deleted })}>
             <h3>
                 <a href={`https://eksisozluk.com/?q=${encodeURIComponent(title)}`}>
                     {highlightText(title, searchQuery)}

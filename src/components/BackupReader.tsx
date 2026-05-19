@@ -59,6 +59,7 @@ export function BackupReader({ backupData }: BackupReaderProps) {
                             title={entry.title}
                             id={entry.id}
                             date={entry.date}
+                            deleted={entry.deleted}
                             nick={nick}
                             parsedContent={entry.parsedContent}
                             searchQuery={deferredQuery}

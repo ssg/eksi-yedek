@@ -68,6 +68,14 @@ footer {
     font-style: italic;
 }
 
+.deleted .aul, .deleted pre {
+    font-style: italic;
+}
+
+.deleted pre {
+    color: #333;
+}
+
 .mini {
     height: 0;
     visibility: hidden;

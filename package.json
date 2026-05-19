@@ -10,6 +10,7 @@
     "build-parser": "peggy --dts --format es -o eksitext-2024.mjs eksitext-2024.peggy"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
     "jszip": "^3.10.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"

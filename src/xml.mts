@@ -9,6 +9,7 @@ export interface BackupEntry {
     title: string
     id: number
     date: Date
+    deleted: boolean
     parsedContent: ParsedContent[]
     rawText: string
 }
@@ -78,6 +79,7 @@ export function displayXml(xmlBody: string, renderCallback: RenderCallback): voi
             title: element.getAttribute('title')!,
             id: Number(element.getAttribute('id')),
             date: new Date(element.getAttribute('date')!),
+            deleted: element.getAttribute('deleted') === 'true',
             parsedContent,
             rawText
         }
