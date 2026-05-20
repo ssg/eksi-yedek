@@ -72,8 +72,8 @@ footer {
     font-style: italic;
 }
 
-.deleted pre {
-    color: #333;
+.deleted {
+    opacity: 0.5;
 }
 
 .mini {
