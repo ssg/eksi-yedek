@@ -70,7 +70,7 @@ scheme = "http://" / "https://" / "ftp://"
 
 hostname = dns_label ("." dns_label)*
 
-dns_label = [\p{L}\p{N}\-]+
+dns_label = [\p{L}\p{N}\-_]+
 
 port = ":" [0-9]|1..5|
 

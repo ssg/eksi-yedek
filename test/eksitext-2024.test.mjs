@@ -156,6 +156,11 @@ describe('Ekşi Sözlük Parser', () => {
       expected: [{ type: 'url', url: 'https://ÖÇŞİĞÜöçşığü.com' }]
     },
     {
+      name: 'URL with hostname containing underscore',
+      input: 'https://old_style.example.com/',
+      expected: [{ type: 'url', url: 'https://old_style.example.com/' }]
+    },
+    {
       name: 'named URL',
       input: '[https://example.com Example]',
       expected: [{ type: 'named_url', url: 'https://example.com', title: 'Example' }]
