@@ -74,6 +74,6 @@ port = ":" [0-9]|1..5|
 
 path = "/" [^?/\x20\n\]]* path*
 
-url_query = "?" [^\x20\n\]]+
+url_query = "?" [^\x20\n\]]*
 
 plain_text = (!directive .)+

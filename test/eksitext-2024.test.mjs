@@ -146,6 +146,11 @@ describe('Ekşi Sözlük Parser', () => {
       expected: [{ type: 'url', url: 'http://example.com:8080' }]
     },
     {
+      name: 'URL with parameterless query',
+      input: 'https://example.com/?',
+      expected: [{ type: 'url', url: 'https://example.com/?' }]
+    },
+    {
       name: 'named URL',
       input: '[https://example.com Example]',
       expected: [{ type: 'named_url', url: 'https://example.com', title: 'Example' }]
