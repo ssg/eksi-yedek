@@ -22,7 +22,7 @@ named_url = "[" url:url SPACE+ title:$(!"]" .)+ "]" { return { type: "named_url"
 
 unnamed_url = "[" url:url "]" { return { type: "url", url: url.url} }
 
-url = url:$(scheme host port? path? url_query?) { return { type: "url", url } }
+url = url:$(scheme hostname port? path? url_query?) { return { type: "url", url } }
 
 ara = "(ara" [:;.] SPACE* query:$(!"\x29" .)+ ")" { return { type: "ara", query: query } }
 
@@ -68,7 +68,9 @@ NEWLINE = [\n]
   
 scheme = "http://" / "https://" / "ftp://"
 
-host = [a-z-0-9.]+
+hostname = dns_label ("." dns_label)*
+
+dns_label = [\p{L}\p{N}\-]+
 
 port = ":" [0-9]|1..5|
 
