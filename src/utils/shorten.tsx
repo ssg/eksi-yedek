@@ -15,3 +15,11 @@ export function shortenUrlDisplay(url: string): string {
         return url
     }
 }
+
+export function shortenUrlInfo(url: string): { display: string; title: string | undefined } {
+    const display = shortenUrlDisplay(url)
+    return {
+        display,
+        title: display !== url ? url : undefined,
+    }
+}
