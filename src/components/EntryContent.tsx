@@ -92,7 +92,7 @@ export function EntryContent({ parts, searchQuery = '' }: EntryContentProps) {
 
                     case 'entry_query':
                         return (
-                            <a key={index} href={`https://eksisozluk.com/entry/${encodeURIComponent(part.entry_id!)}`} target="_blank" rel="noopener noreferrer">
+                            <a key={index} href={`https://eksisozluk.com/entry/${encodeURIComponent(part.entry_id!)}`}>
                                 {hl(`#${part.entry_id}`)}
                             </a>
                         )
