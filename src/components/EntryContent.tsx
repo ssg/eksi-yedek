@@ -85,7 +85,7 @@ export function EntryContent({ parts, searchQuery = '' }: EntryContentProps) {
                     
                     case 'named_url':
                         return (
-                            <a key={index} href={encodeURI(part.url!)} target="_blank" rel="noopener noreferrer">
+                            <a key={index} href={encodeURI(part.url!)} target="_blank" rel="noopener noreferrer"  title={part.url!}>
                                 {hl(part.title!)}
                             </a>
                         )
