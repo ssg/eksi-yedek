@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'eksi-yedek';
+    src: url('font/eksi-yedek.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     background-color: #ccc;
     color: black;
@@ -171,4 +178,25 @@ h2 {
 
 small {
     color: #555;
+}
+
+.url:after {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    font-family: 'eksi-yedek';
+    speak: none;
+    text-decoration: inherit;
+    width: 1em;
+    text-align: center;
+
+    /* For safety - reset parent styles, that can break glyph codes*/
+    font-variant: normal;
+    text-transform: none;
+
+    /* fix buttons height, for twitter bootstrap */
+    line-height: 1em;
+    padding-left: 2px;
+    content: '\f08e';
 }
