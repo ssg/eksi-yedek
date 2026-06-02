@@ -76,13 +76,18 @@ export function EntryContent({ parts, searchQuery = '' }: EntryContentProps) {
                     case 'line_break':
                         return <br key={index} />
                     
-                    case 'url':
+                    case 'url':{
+                        const url = part.url!
+                        const shortened = shortenUrlDisplay(url)
+                        const isShortened = shortened !== url
+                        const title = isShortened ? url : undefined
+
                         return (
-                            <a key={index} href={encodeURI(part.url!)} target="_blank" rel="noopener noreferrer">
-                                {hl(shortenUrlDisplay(part.url!))}
+                            <a key={index} href={encodeURI(part.url!)} target="_blank" rel="noopener noreferrer" title={title}>
+                                {hl(shortened)}
                             </a>
                         )
-                    
+                    }
                     case 'named_url':
                         return (
                             <a key={index} href={encodeURI(part.url!)} target="_blank" rel="noopener noreferrer"  title={part.url!}>
