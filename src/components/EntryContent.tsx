@@ -78,7 +78,7 @@ export function EntryContent({ parts, searchQuery = '' }: EntryContentProps) {
                     
                     case 'url':
                         return (
-                            <a key={index} href={encodeURI(part.url!)} target="_blank" rel="noopener noreferrer" title={part.url!}>
+                            <a key={index} href={encodeURI(part.url!)} target="_blank" rel="noopener noreferrer">
                                 {hl(shortenUrlDisplay(part.url!))}
                             </a>
                         )
