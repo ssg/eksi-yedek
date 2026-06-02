@@ -83,14 +83,15 @@ export function EntryContent({ parts, searchQuery = '' }: EntryContentProps) {
                         const title = isShortened ? url : undefined
 
                         return (
-                            <a key={index} href={encodeURI(part.url!)} target="_blank" rel="noopener noreferrer" title={title}>
+                            <a key={index} className="url" href={encodeURI(part.url!)} target="_blank" rel="noopener noreferrer" title={title}>
                                 {hl(shortened)}
                             </a>
                         )
                     }
+
                     case 'named_url':
                         return (
-                            <a key={index} href={encodeURI(part.url!)} target="_blank" rel="noopener noreferrer"  title={part.url!}>
+                            <a key={index} className="url" href={encodeURI(part.url!)} target="_blank" rel="noopener noreferrer"  title={part.url!}>
                                 {hl(part.title!)}
                             </a>
                         )
