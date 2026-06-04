@@ -171,6 +171,36 @@ describe('Ekşi Sözlük Parser', () => {
       expected: [{ type: 'url', url: 'https://example.com' }]
     },
     {
+      name: 'URL with parentheses in the path',
+      input: 'https://en.wikipedia.org/wiki/Apple_Trees_(film)',
+      expected: [{ type: 'url', url: 'https://en.wikipedia.org/wiki/Apple_Trees_(film)' }]
+    },
+    {
+      name: 'URL with parentheses in the path (intended-bkz)',
+      input: '(bkz: https://en.wikipedia.org/wiki/Apple_Trees_(film))',
+      expected: ['(bkz: ', { type: 'url', url: 'https://en.wikipedia.org/wiki/Apple_Trees_(film)' }, ')']
+    },
+    {
+      name: 'URL with parentheses in the query',
+      input: 'https://eksisozluk.com/?q=thread+(protokol)',
+      expected: [{ type: 'url', url: 'https://eksisozluk.com/?q=thread+(protokol)' }]
+    },
+    {
+      name: 'URL with parentheses in the query (intended-bkz)',
+      input: '(bkz: https://eksisozluk.com/?q=thread+(protokol))',
+      expected: ['(bkz: ', { type: 'url', url: 'https://eksisozluk.com/?q=thread+(protokol)' }, ')']
+    },
+    {
+      name: 'URL with ridiculously nested parentheses in the path (intended-bkz)',
+      input: '(bkz: https://en.wikipedia.org/wiki/Apple_Trees_(()film))',
+      expected: ['(bkz: ', { type: 'url', url: 'https://en.wikipedia.org/wiki/Apple_Trees_(()film)' }, ')']
+    },
+    {
+      name: 'URL with ridiculously nested parentheses in the query (intended-bkz)',
+      input: '(bkz: https://eksisozluk.com/?q=thread+(()protokol))',
+      expected: ['(bkz: ', { type: 'url', url: 'https://eksisozluk.com/?q=thread+(()protokol)' }, ')']
+    },
+    {
       name: 'paragraph break',
       input: 'text1\n\ntext2',
       expected: ['text1', { type: 'paragraph_break' }, 'text2']
