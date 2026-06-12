@@ -271,7 +271,47 @@ describe('Ekşi Sözlük Parser', () => {
       name: 'no @nick query support in abkz (no text)',
       input: '`:@ssg`',
       expected: ['`:@ssg`']
-    }
+    },
+    {
+      name: 'no leading spaces support in abkz visible part',
+      input: '` visible:hidden`',
+      expected: ['` visible:hidden`']
+    },
+    {
+      name: 'allow trailing spaces in abkz visible part',
+      input: '`visible :hidden`',
+      expected: [{ type: 'abkz', text: 'visible', query: 'hidden' }]
+    },
+    {
+      name: 'allow leading spaces in abkz query',
+      input: '`visible: hidden`',
+      expected: [{ type: 'abkz', text: 'visible', query: 'hidden' }]
+    },
+    {
+      name: 'allow trailing spaces in abkz query',
+      input: '`visible:hidden `',
+      expected: [{ type: 'abkz', text: 'visible', query: 'hidden' }]
+    },
+    {
+      name: 'allow leading spaces in bkz query',
+      input: '(bkz:  query)',
+      expected: [{ type: 'bkz', query: 'query' }]
+    },
+    {
+      name: 'allow trailing spaces in bkz query',
+      input: '(bkz: query )',
+      expected: [{ type: 'bkz', query: 'query' }]
+    },
+    {
+      name: 'allow leading spaces in ara',
+      input: '(ara:  query)',
+      expected: [{ type: 'ara', query: 'query' }]
+    },
+    {
+      name: 'allow trailing spaces in ara',
+      input: '(ara: query )',
+      expected: [{ type: 'ara', query: 'query' }]
+    },
   ];
   testCases.forEach(({ name, input, expected }) => {
     it(`should parse ${name} correctly`, () => {

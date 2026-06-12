@@ -26,15 +26,19 @@ url = url:$(scheme hostname port? path? url_query?) { return { type: "url", url 
 
 url_auto = url:$(scheme hostname port? url_auto_path? url_auto_query?) { return { type: "url", url } }
 
-ara = "(ara" [:;.] SPACE* query:$(!"\x29" .)+ ")" { return { type: "ara", query: query } }
+ara = "(ara" [:;.] SPACE* query:$ara_query SPACE* ")" { return { type: "ara", query: query } }
 
-bkz = "(bkz" [\':;.] SPACE* query:$query ")" { return { type: "bkz", query: query } }
+bkz = "(bkz" [\':;.] SPACE* query:$query SPACE* ")" { return { type: "bkz", query: query } }
 
-abkz = "`" SPACE* visible:query? ":" hidden:query SPACE* "`" { return { type: "abkz", text: visible, query: hidden } }
+abkz = "`" visible:query? SPACE* ":" SPACE* hidden:query SPACE* "`" { return { type: "abkz", text: visible, query: hidden } }
 
 paragraph_break = line_break|2..| { return { type: "paragraph_break" } }
 
 line_break = NEWLINE { return { type: "line_break" } }
+
+ara_query = ara_word (SPACE+ ara_word)*
+
+ara_word = [^ )]+
 
 query = $(entry_query / title:title ("/" (nick_query / entry_query / seq))?)
 
