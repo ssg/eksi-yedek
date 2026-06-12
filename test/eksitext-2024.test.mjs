@@ -251,6 +251,26 @@ describe('Ekşi Sözlük Parser', () => {
         },
         " gerçek benliğini bulmakta"
       ]
+    },
+    {
+      name: 'no @nick query support in bkz',
+      input: '(bkz: @ssg)',
+      expected: ['(bkz: @ssg)']
+    },
+    {
+      name: 'no @nick query support in gbkz',
+      input: '`@ssg`',
+      expected: ['`@ssg`']
+    },
+    {
+      name: 'no @nick query support in abkz',
+      input: '`ssg:@ssg`',
+      expected: ['`ssg:@ssg`']
+    },
+    {
+      name: 'no @nick query support in abkz (no text)',
+      input: '`:@ssg`',
+      expected: ['`:@ssg`']
     }
   ];
   testCases.forEach(({ name, input, expected }) => {

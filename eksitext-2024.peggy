@@ -36,7 +36,7 @@ paragraph_break = line_break|2..| { return { type: "paragraph_break" } }
 
 line_break = NEWLINE { return { type: "line_break" } }
 
-query = $(entry_query / nick_query / title:title ("/" (nick_query / entry_query / seq))?)
+query = $(entry_query / title:title ("/" (nick_query / entry_query / seq))?)
 
 nick_query = "@" nick:$nick
 
