@@ -48,7 +48,11 @@ entry_query = "#" entry_id:$entry_id { return {type: "entry_query", entry_id: en
 
 nick = NICK_CHAR+ (SPACE NICK_CHAR+)*
 
-title_component = TITLE_CHAR+ (SPACE TITLE_CHAR+)*
+title_slash = "/" ![@]
+
+title_word = (title_slash / TITLE_CHAR)+
+
+title_component = title_word (SPACE title_word)*
 
 title = title:$title_component (SPACE "(" kind:$title_component ")")?
 
@@ -66,7 +70,7 @@ ASCII_LETTER = [a-z]
 
 TURKISH_LETTER = [şğüöçıŞĞÜÖÇİ]
 
-TITLE_CHAR = ASCII_LETTER / TURKISH_LETTER / DIGIT / [-._%+€/=^&$#']
+TITLE_CHAR = ASCII_LETTER / TURKISH_LETTER / DIGIT / [-._%+€=^&$#']
 
 NICK_CHAR = ASCII_LETTER / DIGIT
 

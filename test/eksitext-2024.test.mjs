@@ -26,6 +26,26 @@ describe('Ekşi Sözlük Parser', () => {
       expected: [{ type: 'gbkz', query: 'query with spaces' }]
     },
     {
+      name: 'gbkz with entry query',
+      input: '`#123`',
+      expected: [{ type: 'gbkz', query: '#123' }]
+    },
+    {
+      name: 'gbkz with topic/nick query',
+      input: '`pena/@ssg`',
+      expected: [{ type: 'gbkz', query: 'pena/@ssg' }]
+    },
+    {
+      name: 'gbkz with topic/entry query',
+      input: '`pena/#1`',
+      expected: [{ type: 'gbkz', query: 'pena/#1' }]
+    },
+    {
+      name: 'gbkz with topic/sequence query',
+      input: '`pena/1`',
+      expected: [{ type: 'gbkz', query: 'pena/1' }]
+    },
+    {
       name: 'simple bkz',
       input: '(bkz: query)',
       expected: [{ type: 'bkz', query: 'query' }]
@@ -111,14 +131,74 @@ describe('Ekşi Sözlük Parser', () => {
       expected: [{ type: 'bkz', query: '#melihgokcektimarhaneye' }]
     },
     {
+      name: 'bkz with entry query',
+      input: '(bkz: #123)',
+      expected: [{ type: 'bkz', query: '#123' }]
+    },
+    {
+      name: 'bkz with topic/nick query',
+      input: '(bkz: pena/@ssg)',
+      expected: [{ type: 'bkz', query: 'pena/@ssg' }]
+    },
+    {
+      name: 'bkz with topic/entry query',
+      input: '(bkz: pena/#1)',
+      expected: [{ type: 'bkz', query: 'pena/#1' }]
+    },
+    {
+      name: 'bkz with topic/sequence query',
+      input: '(bkz: pena/1)',
+      expected: [{ type: 'bkz', query: 'pena/1' }]
+    },
+    {
       name: 'abkz with visible and hidden parts',
       input: '`visible:hidden`',
       expected: [{ type: 'abkz', text: 'visible', query: 'hidden' }]
     },
     {
+      name: 'abkz with entry query',
+      input: '`visible:#123`',
+      expected: [{ type: 'abkz', text: 'visible', query: '#123' }]
+    },
+    {
+      name: 'abkz with topic/nick query',
+      input: '`visible:pena/@ssg`',
+      expected: [{ type: 'abkz', text: 'visible', query: 'pena/@ssg' }]
+    },
+    {
+      name: 'abkz with topic/entry query ',
+      input: '`visible:pena/#1`',
+      expected: [{ type: 'abkz', text: 'visible', query: 'pena/#1' }]
+    },
+    {
+      name: 'abkz with topic/sequence query',
+      input: '`visible:pena/1`',
+      expected: [{ type: 'abkz', text: 'visible', query: 'pena/1' }]
+    },
+    {
       name: 'abkz with only hidden part',
       input: '`:hidden`',
       expected: [{ type: 'abkz', text: null, query: 'hidden' }]
+    },
+    {
+      name: 'abkz (no text) with entry query',
+      input: '`:#123`',
+      expected: [{ type: 'abkz', text: null, query: '#123' }]
+    },
+    {
+      name: 'abkz (no text) with topic/nick query',
+      input: '`:pena/@ssg`',
+      expected: [{ type: 'abkz', text: null, query: 'pena/@ssg' }]
+    },
+    {
+      name: 'abkz (no text) with topic/entry query ',
+      input: '`:pena/#1`',
+      expected: [{ type: 'abkz', text: null, query: 'pena/#1' }]
+    },
+    {
+      name: 'abkz (no text) with topic/sequence query',
+      input: '`:pena/1`',
+      expected: [{ type: 'abkz', text: null, query: 'pena/1' }]
     },
     {
       name: 'direct entry query',
