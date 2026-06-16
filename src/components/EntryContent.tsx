@@ -81,7 +81,7 @@ export function EntryContent({ parts, searchQuery = '' }: EntryContentProps) {
 
                         return (
                             <a key={index} className="url" href={encodeURI(part.url!)} target="_blank" rel="noopener noreferrer" title={urlInfo.title}>
-                                {hl(urlInfo.display)}
+                                {hl(urlInfo.display.toLowerCase())}
                             </a>
                         )
                     }
@@ -89,7 +89,7 @@ export function EntryContent({ parts, searchQuery = '' }: EntryContentProps) {
                     case 'named_url':
                         return (
                             <a key={index} className="url" href={encodeURI(part.url!)} target="_blank" rel="noopener noreferrer"  title={part.url!}>
-                                {hl(part.title!)}
+                                {hl(part.title!.toLocaleLowerCase('tr'))}
                             </a>
                         )
 
