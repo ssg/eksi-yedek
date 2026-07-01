@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import { BackupData } from '../xml.mts'
 import { BackupHeader } from './BackupHeader'
 import { SearchBox } from './SearchBox'
@@ -22,21 +22,28 @@ export function BackupReader({ backupData }: BackupReaderProps) {
         setSearchResetKey(k => k + 1)
     }, [backupData])
 
+    const lowerQuery = deferredQuery.toLocaleLowerCase('tr')
+
+    const [filteredEntries, filteredDrafts] = useMemo(() => {
+        if (!backupData) {
+            return [[], []]
+        }
+        const { entries, drafts } = backupData
+        return [
+            deferredQuery != ''
+                ? entries.filter(e => matchesQuery(e.title, e.rawText, lowerQuery))
+                : entries,
+            deferredQuery != ''
+                ? drafts.filter(d => matchesQuery(d.title, d.rawText, lowerQuery))
+                : drafts
+            ]
+    }, [backupData, lowerQuery])
+
     if (!backupData) {
         return null
     }
 
-    const { nick, backupDate, entries, drafts } = backupData        
-
-    const lowerQuery = deferredQuery.toLocaleLowerCase('tr')
-
-    const filteredEntries = deferredQuery != ''
-        ? entries.filter(e => matchesQuery(e.title, e.rawText, lowerQuery))
-        : entries
-
-    const filteredDrafts = deferredQuery != ''
-        ? drafts.filter(d => matchesQuery(d.title, d.rawText, lowerQuery))
-        : drafts
+    const { nick, backupDate, entries, drafts } = backupData
 
     const noResults = !!deferredQuery && filteredEntries.length === 0 && filteredDrafts.length === 0
 
