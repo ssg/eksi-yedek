@@ -35,7 +35,7 @@ export function BackupReader({ backupData }: BackupReaderProps) {
         : entries
 
     const filteredDrafts = deferredQuery != ''
-        ? drafts.filter((d: any) => matchesQuery(d.title, d.rawText, lowerQuery))
+        ? drafts.filter(d => matchesQuery(d.title, d.rawText, lowerQuery))
         : drafts
 
     const noResults = !!deferredQuery && filteredEntries.length === 0 && filteredDrafts.length === 0
@@ -66,7 +66,11 @@ export function BackupReader({ backupData }: BackupReaderProps) {
                         />
                     ))}
 
-                    <DraftsSection drafts={filteredDrafts} nick={nick} searchQuery={deferredQuery} />
+                    <DraftsSection 
+                        drafts={filteredDrafts} 
+                        nick={nick} 
+                        searchQuery={deferredQuery} 
+                    />
                 </>
             )}
         </div>
