@@ -53,9 +53,9 @@ export function BackupReader({ backupData }: BackupReaderProps) {
                 <p className="no-results">yok böyle bişii???</p>
             ) : (
                 <>
-                    {filteredEntries.map((entry, index) => (
+                    {filteredEntries.map((entry) => (
                         <Entry
-                            key={index}
+                            key={entry.id}
                             title={entry.title}
                             id={entry.id}
                             date={entry.date}
