@@ -1,13 +1,8 @@
+import { BackupDraft } from '../xml.mts';
 import { Entry } from './Entry'
 
-interface Draft {
-    title: string
-    date: Date
-    parsedContent: any[]
-}
-
 interface DraftsSectionProps {
-    drafts?: Draft[]
+    drafts?: BackupDraft[]
     nick: string
     searchQuery?: string
 }
