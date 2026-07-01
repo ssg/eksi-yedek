@@ -1,18 +1,18 @@
-import React, { useState } from 'react'
-import { displayXml } from './xml.mts'
+import { useEffect, useState } from 'react'
+import { BackupData, displayXml } from './xml.mts'
 import { BackupReader } from './components/BackupReader'
 import { DropZone } from './components/DropZone'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import { version } from '../package.json'
 
 export function App() {
-    const [backupData, setBackupData] = useState<any>(null)
+    const [backupData, setBackupData] = useState<BackupData | null>(null)
 
     const handleFileProcessed = (xmlBody: string) => {
         displayXml(xmlBody, setBackupData)
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         // Test mode
         if (location.search === "?test=1") {
             fetch("ssg.xml")
