@@ -1,6 +1,6 @@
 import React from 'react'
 import { highlightText } from '../utils/highlight'
-import { shortenUrlInfo } from '../utils/shorten'
+import { shortenUrlInfo } from '../utils/shorten.mts'
 
 type ContentPart = string | string[] | {
     type: 'ara' | 'gbkz' | 'bkz' | 'abkz' | 'paragraph_break' | 'line_break' | 'url' | 'named_url' | 'entry_query' | 'raw_text'
