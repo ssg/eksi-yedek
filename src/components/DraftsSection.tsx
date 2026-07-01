@@ -17,7 +17,7 @@ export function DraftsSection({ drafts, nick, searchQuery = '' }: DraftsSectionP
             <h2>kenarda duranlar ({drafts.length})</h2>
             {drafts.map((draft, index) => (
                 <Entry
-                    key={index}
+                    key={draft.title}
                     title={draft.title}
                     date={draft.date}
                     nick={nick}
