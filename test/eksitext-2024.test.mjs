@@ -16,6 +16,21 @@ describe('Ekşi Sözlük Parser', () => {
       expected: [{ type: 'ara', query: 'at av* si*' }]
     },
     {
+      name: 'invalid ara (open parenthesis)',
+      input: '(ara: a(se)',
+      expected: ['(ara: a(se)']
+    },
+    {
+      name: 'invalid ara (backtrick)',
+      input: '(ara: a`se)',
+      expected: ['(ara: a`se)']
+    },
+    {
+      name: 'invalid ara (colon)',
+      input: '(ara: a:se)',
+      expected: ['(ara: a:se)']
+    },
+    {
       name: 'simple gbkz',
       input: '`query`',
       expected: [{ type: 'gbkz', query: 'query' }]

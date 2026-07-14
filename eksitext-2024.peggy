@@ -38,7 +38,7 @@ line_break = NEWLINE { return { type: "line_break" } }
 
 ara_query = ara_word (SPACE+ ara_word)*
 
-ara_word = [^ )]+
+ara_word = [^\x20`:()]+
 
 query = $(entry_query / title:title ("/" (nick_query / entry_query / seq))?)
 
