@@ -221,6 +221,31 @@ describe('Ekşi Sözlük Parser', () => {
       expected: [{ type: 'entry_query', entry_id: '123' }]
     },
     {
+      name: 'invalid entry query #0',
+      input: '#0',
+      expected: ['#0']
+    },
+    {
+      name: 'invalid entry query #00',
+      input: '#00',
+      expected: ['#00']
+    },
+    {
+      name: 'valid entry query with a zero-padding ID',
+      input: '#000123',
+      expected: [{ type: 'entry_query', entry_id: '000123' }]
+    },
+    {
+      name: 'invalid entry query followed by a letter',
+      input: '#123p',
+      expected: ['#123p']
+    },
+    {
+      name: 'valid entry query followed by a non-alphanumeric character',
+      input: '#123!',
+      expected: [{ type: 'entry_query', entry_id: '123' }, '!']
+    },
+    {
       name: 'simple URL (https)',
       input: 'https://example.com',
       expected: [{ type: 'url', url: 'https://example.com' }]

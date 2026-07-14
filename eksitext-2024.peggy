@@ -56,7 +56,7 @@ title_component = title_word (SPACE title_word)*
 
 title = title:$title_component (SPACE "(" kind:$title_component ")")?
 
-entry_id = NUMBER
+entry_id = "0"* [1-9] DIGIT* !LETTER
 
 seq = NUMBER
 
@@ -65,6 +65,8 @@ NUMBER = DIGIT+
 SPACE = ' '
 
 DIGIT = [0-9]
+
+LETTER = [\p{L}]
 
 ASCII_LETTER = [a-z]
 
