@@ -166,6 +166,31 @@ describe('Ekşi Sözlük Parser', () => {
       expected: [{ type: 'bkz', query: 'pena/1' }]
     },
     {
+      name: 'bkz with topic with challenging disambiguation text',
+      input: '(bkz: bir (pentagram albümü/şarkısı))',
+      expected: [{ type: 'bkz', query: 'bir (pentagram albümü/şarkısı)' }]
+    },
+    {
+      name: 'bkz with topic with challenging disambiguation text/sequence query',
+      input: '(bkz: bir (pentagram albümü/şarkısı)/123)',
+      expected: [{ type: 'bkz', query: 'bir (pentagram albümü/şarkısı)/123' }]
+    },
+    {
+      name: 'bkz with topic with challenging disambiguation text/entry query',
+      input: '(bkz: bir (pentagram albümü/şarkısı)/#123)',
+      expected: [{ type: 'bkz', query: 'bir (pentagram albümü/şarkısı)/#123' }]
+    },
+    {
+      name: 'bkz with topic with challenging disambiguation text/nick query',
+      input: '(bkz: bir (pentagram albümü/şarkısı)/@ssg)',
+      expected: [{ type: 'bkz', query: 'bir (pentagram albümü/şarkısı)/@ssg' }]
+    },    
+    {
+      name: 'bkz with a strange query',
+      input: '(bkz: ?*]<>6)',
+      expected: [{ type: 'bkz', query: '?*]<>6' }]
+    },
+    {
       name: 'abkz with visible and hidden parts',
       input: '`visible:hidden`',
       expected: [{ type: 'abkz', text: 'visible', query: 'hidden' }]
@@ -193,27 +218,27 @@ describe('Ekşi Sözlük Parser', () => {
     {
       name: 'abkz with only hidden part',
       input: '`:hidden`',
-      expected: [{ type: 'abkz', text: null, query: 'hidden' }]
+      expected: [{ type: 'abkz', text: "", query: 'hidden' }]
     },
     {
       name: 'abkz (no text) with entry query',
       input: '`:#123`',
-      expected: [{ type: 'abkz', text: null, query: '#123' }]
+      expected: [{ type: 'abkz', text: "", query: '#123' }]
     },
     {
       name: 'abkz (no text) with topic/nick query',
       input: '`:pena/@ssg`',
-      expected: [{ type: 'abkz', text: null, query: 'pena/@ssg' }]
+      expected: [{ type: 'abkz', text: "", query: 'pena/@ssg' }]
     },
     {
       name: 'abkz (no text) with topic/entry query ',
       input: '`:pena/#1`',
-      expected: [{ type: 'abkz', text: null, query: 'pena/#1' }]
+      expected: [{ type: 'abkz', text: "", query: 'pena/#1' }]
     },
     {
       name: 'abkz (no text) with topic/sequence query',
       input: '`:pena/1`',
-      expected: [{ type: 'abkz', text: null, query: 'pena/1' }]
+      expected: [{ type: 'abkz', text: "", query: 'pena/1' }]
     },
     {
       name: 'direct entry query',
@@ -245,6 +270,7 @@ describe('Ekşi Sözlük Parser', () => {
       input: '#123!',
       expected: [{ type: 'entry_query', entry_id: '123' }, '!']
     },
+
     {
       name: 'simple URL (https)',
       input: 'https://example.com',
@@ -355,19 +381,19 @@ describe('Ekşi Sözlük Parser', () => {
       expected: [
         "herkes kötü deneyimlerimle ve duygularımla dalga geçiyor. hayatı boyunca bulunduğu -istisnasız- her yerde şiddete maruz kalmış biri olarak beni ",
         {
-          "query": "cesaret",
-          "type": "gbkz"
+          query: "cesaret",
+          type: "gbkz"
         },
         "lendirecek birini bulmalıydım. bu yüzden ekşi sözlük her ne kadar kendisine öğretilen milyonlarca ",
         {
-          "query": "bilgi",
-          "type": "gbkz"
+          query: "bilgi",
+          type: "gbkz"
         },
         "yi sorgularken",
         {
-          "query": "sorgulamak",
-          "text": null,
-          "type": "abkz"
+          query: "sorgulamak",
+          text: "",
+          type: "abkz"
         },
         " gerçek benliğini bulmakta"
       ]

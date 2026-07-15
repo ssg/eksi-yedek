@@ -16,51 +16,39 @@ directive = ara
   / paragraph_break
   / line_break
   
-gbkz = "`" SPACE* query:$query SPACE* "`" { return { type: "gbkz", query: query } }
+gbkz = "`" WS* query:$query WS* "`" { return { type: "gbkz", query: query.trim() } }
 
-named_url = "[" url:url SPACE+ title:$(!"]" .)+ "]" { return { type: "named_url", url: url.url, title: title} }
+named_url = "[" url:url WS+ title:$anchor_text "]" { return { type: "named_url", url: url.url, title: title.trim()} }
 
-unnamed_url = "[" url:url "]" { return { type: "url", url: url.url} }
+unnamed_url = "[" url:url WS* "]" { return { type: "url", url: url.url.trim() } }
 
 url = url:$(scheme hostname port? path? url_query?) { return { type: "url", url } }
 
 url_auto = url:$(scheme hostname port? url_auto_path? url_auto_query?) { return { type: "url", url } }
 
-ara = "(ara" [:;.] SPACE* query:$ara_query SPACE* ")" { return { type: "ara", query: query } }
+ara = "(ara" [:;.] WS* query:$ara_query_component WS* ")" { return { type: "ara", query: query.trim() } }
 
-bkz = "(bkz" [\':;.] SPACE* query:$query SPACE* ")" { return { type: "bkz", query: query } }
+bkz = "(bkz" [.:;] WS* query:$query WS* ")" { return { type: "bkz", query: query.trim() } }
 
-abkz = "`" visible:query? SPACE* ":" SPACE* hidden:query SPACE* "`" { return { type: "abkz", text: visible, query: hidden } }
+abkz = "`" text:$abkz_text? SPACE* ":" WS* query:$query SPACE* "`" { return { type: "abkz", text: text.trim(), query: query.trim() } }
 
 paragraph_break = line_break|2..| { return { type: "paragraph_break" } }
 
 line_break = NEWLINE { return { type: "line_break" } }
 
-ara_query = ara_word (SPACE+ ara_word)*
+//ara_query = ara_word (SPACE+ ara_word)*
 
-ara_word = [^\x20`:()]+
+//ara_word = [^\x20`:()]+
 
-query = $(entry_query / title:title ("/" (nick_query / entry_query / seq))?)
+query = !nick_query query_component (SPACE* "(" query_component ")")? query_component?
 
-nick_query = "@" nick:$nick
+nick_query = "@" $nick
 
 entry_query = "#" entry_id:$entry_id { return {type: "entry_query", entry_id: entry_id} }
 
 nick = NICK_CHAR+ (SPACE NICK_CHAR+)*
 
-title_slash = "/" ![@]
-
-title_word = (title_slash / TITLE_CHAR)+
-
-title_component = title_word (SPACE title_word)*
-
-title = title:$title_component (SPACE "(" kind:$title_component ")")?
-
 entry_id = "0"* [1-9] DIGIT* !LETTER
-
-seq = NUMBER
-
-NUMBER = DIGIT+
 
 SPACE = ' '
 
@@ -69,10 +57,6 @@ DIGIT = [0-9]
 LETTER = [\p{L}]
 
 ASCII_LETTER = [a-z]
-
-TURKISH_LETTER = [şğüöçıŞĞÜÖÇİ]
-
-TITLE_CHAR = ASCII_LETTER / TURKISH_LETTER / DIGIT / [-._%+€=^&$#']
 
 NICK_CHAR = ASCII_LETTER / DIGIT
 
@@ -103,3 +87,15 @@ url_auto_query_string = url_auto_query_string_part+ / "(" url_auto_query_string_
 url_auto_query_string_part = [^\x20\n\]()] / "(" url_auto_query_string_part* ")"
 
 plain_text = (!directive .)+
+
+WS = SPACE / NEWLINE
+
+anchor_text = title:$(!"]" .)+
+
+abkz_text = [^\n\x20:()`]+ (" " abkz_text)*
+
+query_component = query_word (SPACE+ query_word*)*
+
+query_word = [^:`()\x20\n]+
+
+ara_query_component = query_word (WS+ query_word*)*
