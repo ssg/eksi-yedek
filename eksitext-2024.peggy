@@ -46,18 +46,6 @@ nick = NICK_CHAR+ (SPACE NICK_CHAR+)*
 
 entry_id = "0"* [1-9] DIGIT* !LETTER
 
-SPACE = ' '
-
-DIGIT = [0-9]
-
-LETTER = [\p{L}]
-
-ASCII_LETTER = [a-z]
-
-NICK_CHAR = ASCII_LETTER / DIGIT
-
-NEWLINE = [\n]
-  
 scheme = "http://" / "https://" / "ftp://"
 
 hostname = dns_label ("." dns_label)*
@@ -84,8 +72,6 @@ url_auto_query_string_part = [^\x20\n\]()] / "(" url_auto_query_string_part* ")"
 
 plain_text = (!directive .)+
 
-WS = SPACE / NEWLINE
-
 anchor_text = title:$(!"]" .)+
 
 abkz_text = [^\n\x20:()`]+ (" " abkz_text)*
@@ -95,3 +81,17 @@ query_component = query_word (SPACE+ query_word*)*
 query_word = [^:`()\x20\n]+
 
 ara_query_component = query_word (WS+ query_word*)*
+
+SPACE = ' '
+
+DIGIT = [0-9]
+
+LETTER = [\p{L}]
+
+ASCII_LETTER = [a-z]
+
+NICK_CHAR = ASCII_LETTER / DIGIT
+
+NEWLINE = [\n]
+
+WS = SPACE / NEWLINE
