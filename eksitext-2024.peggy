@@ -36,10 +36,6 @@ paragraph_break = line_break|2..| { return { type: "paragraph_break" } }
 
 line_break = NEWLINE { return { type: "line_break" } }
 
-//ara_query = ara_word (SPACE+ ara_word)*
-
-//ara_word = [^\x20`:()]+
-
 query = !nick_query query_component (SPACE* "(" query_component ")")? query_component?
 
 nick_query = "@" $nick
