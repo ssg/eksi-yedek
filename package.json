@@ -20,7 +20,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.0",
     "@xmldom/xmldom": "^0.9.12",
-    "baseline-browser-mapping": "^2.10.7",
+    "baseline-browser-mapping": "^2.11.0",
     "peggy": "^5.1.0",
     "vite": "^8.0.16",
     "vitest": "^4.1.11"
