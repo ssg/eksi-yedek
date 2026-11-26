@@ -1,4 +1,4 @@
-import { shortenUrlInfo } from '../src/utils/shorten';
+import { prepareUrlInfo } from '../src/utils/urlinfo';
 
 describe('Shorten Url Display', () => {
     const testCases = [
@@ -55,7 +55,7 @@ describe('Shorten Url Display', () => {
     ];
     testCases.forEach(({ name, input, expected }) => {
         it(`should handle ${name} shortening correctly`, () => {
-            const urlInfo = shortenUrlInfo(input);
+            const urlInfo = prepareUrlInfo(input);
             expect(urlInfo.display).toEqual(expected);
         });
     });
