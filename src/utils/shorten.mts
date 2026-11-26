@@ -19,9 +19,10 @@ export function shortenUrlDisplay(url: string): string {
 }
 
 export function shortenUrlInfo(url: string): { display: string; title: string | undefined } {
-    const display = shortenUrlDisplay(url)
+    const decodedUrl = decodeURIComponent(url)
+    const display = shortenUrlDisplay(decodedUrl)
     return {
         display,
-        title: display !== url ? url : undefined,
+        title: display !== decodedUrl ? decodedUrl : undefined,
     }
 }
