@@ -1,6 +1,6 @@
 import { prepareUrlInfo } from '../src/utils/urlinfo';
 
-describe('Shorten Url Display', () => {
+describe('Url Display', () => {
     const testCases = [
         {
             name: 'short URL',
