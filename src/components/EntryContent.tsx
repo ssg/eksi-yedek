@@ -1,6 +1,6 @@
 import React from 'react'
 import { highlightText } from '../utils/highlight'
-import { shortenUrlInfo } from '../utils/shorten.mts'
+import { prepareUrlInfo } from '../utils/urlinfo.mts'
 
 type ContentPart = string | string[] | {
     type: 'ara' | 'gbkz' | 'bkz' | 'abkz' | 'paragraph_break' | 'line_break' | 'url' | 'named_url' | 'entry_query' | 'raw_text'
@@ -77,7 +77,7 @@ export function EntryContent({ parts, searchQuery = '' }: EntryContentProps) {
                         return <br key={index} />
                     
                     case 'url':{
-                        const urlInfo = shortenUrlInfo(part.url!)
+                        const urlInfo = prepareUrlInfo(part.url!)
 
                         return (
                             <a key={index} className="url" href={encodeURI(part.url!)} target="_blank" rel="noopener noreferrer" title={urlInfo.title}>
