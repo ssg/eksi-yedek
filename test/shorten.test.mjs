@@ -1,4 +1,4 @@
-import { shortenUrlDisplay } from '../src/utils/shorten';
+import { shortenUrlInfo } from '../src/utils/shorten';
 
 describe('Shorten Url Display', () => {
     const testCases = [
@@ -38,6 +38,16 @@ describe('Shorten Url Display', () => {
             expected: 'https://example.example.example.example.example.com/…'
         },
         {
+            name: 'URL with encoded path and query',
+            input: 'https://example.com/%C3%B6%C3%A7%C5%9F/?q=%C4%B1%C4%9F%C3%BC',
+            expected: 'https://example.com/öçş/?q=ığü'
+        },
+        {
+            name: 'URL with a long encoded query',
+            input: 'https://example.com/?q=%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1%C4%B1',
+            expected: 'https://example.com/…ıııııııııııııııııııııııııııııı'
+        },
+        {
             name: 'invalid URL',
             input: 'http://|',
             expected: 'http://|'
@@ -45,8 +55,8 @@ describe('Shorten Url Display', () => {
     ];
     testCases.forEach(({ name, input, expected }) => {
         it(`should handle ${name} shortening correctly`, () => {
-            const result = shortenUrlDisplay(input);
-            expect(result).toEqual(expected);
+            const urlInfo = shortenUrlInfo(input);
+            expect(urlInfo.display).toEqual(expected);
         });
     });
 });
